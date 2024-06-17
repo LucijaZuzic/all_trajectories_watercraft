@@ -5,7 +5,7 @@ import pandas as pd
 
 all_subdirs = os.listdir() 
  
-def read_heading(): 
+def read_heading(nf1, nf2): 
     all_mine = dict()
     for subdir_name in all_subdirs: 
         if not os.path.isdir(subdir_name) or "Vehicle" not in subdir_name:
@@ -19,11 +19,11 @@ def read_heading():
         if os.path.isfile(subdir_name + "/gap_rides_filenames"):
             gap_rides_filenames = load_object(subdir_name + "/gap_rides_filenames")
         test_rides = set()
-        if os.path.isfile(subdir_name + "/test_rides"):
-            test_rides = load_object(subdir_name + "/test_rides")
+        if os.path.isfile(subdir_name + "/test_rides_" + str(nf1 + 1) + "_" + str(nf2 + 1)):
+            test_rides = load_object(subdir_name + "/test_rides_" + str(nf1 + 1) + "_" + str(nf2 + 1))
         val_rides = set()
-        if os.path.isfile(subdir_name + "/val_rides"):
-            val_rides = load_object(subdir_name + "/val_rides")
+        if os.path.isfile(subdir_name + "/val_rides_" + str(nf1 + 1) + "_" + str(nf2 + 1)):
+            val_rides = load_object(subdir_name + "/val_rides_" + str(nf1 + 1) + "_" + str(nf2 + 1))
             
         for some_file in all_files:  
             if subdir_name + "/cleaned_csv/" + some_file in bad_rides_filenames or subdir_name + "/cleaned_csv/" + some_file in gap_rides_filenames or some_file in test_rides or some_file in val_rides: 
@@ -34,12 +34,12 @@ def read_heading():
             direction_int = [np.round(direction, 0) for direction in directions]
             all_mine[subdir_name + "/cleaned_csv/" + some_file] = direction_int
     
-    if not os.path.isdir("actual_train/"):
-        os.makedirs("actual_train/")
+    if not os.path.isdir("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/"):
+        os.makedirs("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/")
     
-    save_object("actual_train/actual_train_direction", all_mine)
+    save_object("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/actual_train_direction", all_mine)
  
-def read_latitude_no_abs(): 
+def read_latitude_no_abs(nf1, nf2): 
     all_mine = dict()
     for subdir_name in all_subdirs: 
         if not os.path.isdir(subdir_name) or "Vehicle" not in subdir_name:
@@ -53,11 +53,11 @@ def read_latitude_no_abs():
         if os.path.isfile(subdir_name + "/gap_rides_filenames"):
             gap_rides_filenames = load_object(subdir_name + "/gap_rides_filenames")
         test_rides = set()
-        if os.path.isfile(subdir_name + "/test_rides"):
-            test_rides = load_object(subdir_name + "/test_rides")
+        if os.path.isfile(subdir_name + "/test_rides_" + str(nf1 + 1) + "_" + str(nf2 + 1)):
+            test_rides = load_object(subdir_name + "/test_rides_" + str(nf1 + 1) + "_" + str(nf2 + 1))
         val_rides = set()
-        if os.path.isfile(subdir_name + "/val_rides"):
-            val_rides = load_object(subdir_name + "/val_rides")
+        if os.path.isfile(subdir_name + "/val_rides_" + str(nf1 + 1) + "_" + str(nf2 + 1)):
+            val_rides = load_object(subdir_name + "/val_rides_" + str(nf1 + 1) + "_" + str(nf2 + 1))
             
         for some_file in all_files:  
             if subdir_name + "/cleaned_csv/" + some_file in bad_rides_filenames or subdir_name + "/cleaned_csv/" + some_file in gap_rides_filenames or some_file in test_rides or some_file in val_rides: 
@@ -71,12 +71,12 @@ def read_latitude_no_abs():
             latitude_int = [np.round(latitudes[latitude_index + 1] - latitudes[latitude_index], 10) for latitude_index in range(len(latitudes) - 1)]
             all_mine[subdir_name + "/cleaned_csv/" + some_file] = latitude_int
    
-    if not os.path.isdir("actual_train/"):
-        os.makedirs("actual_train/")
+    if not os.path.isdir("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/"):
+        os.makedirs("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/")
     
-    save_object("actual_train/actual_train_latitude_no_abs", all_mine)
+    save_object("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/actual_train_latitude_no_abs", all_mine)
   
-def read_longitude_no_abs(): 
+def read_longitude_no_abs(nf1, nf2): 
     all_mine = dict()
     for subdir_name in all_subdirs: 
         if not os.path.isdir(subdir_name) or "Vehicle" not in subdir_name:
@@ -90,11 +90,11 @@ def read_longitude_no_abs():
         if os.path.isfile(subdir_name + "/gap_rides_filenames"):
             gap_rides_filenames = load_object(subdir_name + "/gap_rides_filenames")
         test_rides = set()
-        if os.path.isfile(subdir_name + "/test_rides"):
-            test_rides = load_object(subdir_name + "/test_rides")
+        if os.path.isfile(subdir_name + "/test_rides_" + str(nf1 + 1) + "_" + str(nf2 + 1)):
+            test_rides = load_object(subdir_name + "/test_rides_" + str(nf1 + 1) + "_" + str(nf2 + 1))
         val_rides = set()
-        if os.path.isfile(subdir_name + "/val_rides"):
-            val_rides = load_object(subdir_name + "/val_rides")
+        if os.path.isfile(subdir_name + "/val_rides_" + str(nf1 + 1) + "_" + str(nf2 + 1)):
+            val_rides = load_object(subdir_name + "/val_rides_" + str(nf1 + 1) + "_" + str(nf2 + 1))
             
         for some_file in all_files:  
             if subdir_name + "/cleaned_csv/" + some_file in bad_rides_filenames or subdir_name + "/cleaned_csv/" + some_file in gap_rides_filenames or some_file in test_rides or some_file in val_rides: 
@@ -108,12 +108,12 @@ def read_longitude_no_abs():
             longitude_int = [np.round(longitudes[longitude_index + 1] - longitudes[longitude_index], 10) for longitude_index in range(len(longitudes) - 1)]
             all_mine[subdir_name + "/cleaned_csv/" + some_file] = longitude_int
     
-    if not os.path.isdir("actual_train/"):
-        os.makedirs("actual_train/")
+    if not os.path.isdir("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/"):
+        os.makedirs("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/")
     
-    save_object("actual_train/actual_train_longitude_no_abs", all_mine)
+    save_object("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/actual_train_longitude_no_abs", all_mine)
   
-def read_speed(): 
+def read_speed(nf1, nf2): 
     all_mine = dict()
     for subdir_name in all_subdirs: 
         if not os.path.isdir(subdir_name) or "Vehicle" not in subdir_name:
@@ -127,11 +127,11 @@ def read_speed():
         if os.path.isfile(subdir_name + "/gap_rides_filenames"):
             gap_rides_filenames = load_object(subdir_name + "/gap_rides_filenames")
         test_rides = set()
-        if os.path.isfile(subdir_name + "/test_rides"):
-            test_rides = load_object(subdir_name + "/test_rides")
+        if os.path.isfile(subdir_name + "/test_rides_" + str(nf1 + 1) + "_" + str(nf2 + 1)):
+            test_rides = load_object(subdir_name + "/test_rides_" + str(nf1 + 1) + "_" + str(nf2 + 1))
         val_rides = set()
-        if os.path.isfile(subdir_name + "/val_rides"):
-            val_rides = load_object(subdir_name + "/val_rides")
+        if os.path.isfile(subdir_name + "/val_rides_" + str(nf1 + 1) + "_" + str(nf2 + 1)):
+            val_rides = load_object(subdir_name + "/val_rides_" + str(nf1 + 1) + "_" + str(nf2 + 1))
             
         for some_file in all_files:  
             if subdir_name + "/cleaned_csv/" + some_file in bad_rides_filenames or subdir_name + "/cleaned_csv/" + some_file in gap_rides_filenames or some_file in test_rides or some_file in val_rides: 
@@ -142,12 +142,12 @@ def read_speed():
             speed_int = [np.round(speed, 0) for speed in speeds] 
             all_mine[subdir_name + "/cleaned_csv/" + some_file] = speed_int
     
-    if not os.path.isdir("actual_train/"):
-        os.makedirs("actual_train/")
+    if not os.path.isdir("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/"):
+        os.makedirs("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/")
     
-    save_object("actual_train/actual_train_speed", all_mine)
+    save_object("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/actual_train_speed", all_mine)
 
-def read_time(): 
+def read_time(nf1, nf2): 
     all_mine = dict()
     for subdir_name in all_subdirs: 
         if not os.path.isdir(subdir_name) or "Vehicle" not in subdir_name:
@@ -161,11 +161,11 @@ def read_time():
         if os.path.isfile(subdir_name + "/gap_rides_filenames"):
             gap_rides_filenames = load_object(subdir_name + "/gap_rides_filenames")
         test_rides = set()
-        if os.path.isfile(subdir_name + "/test_rides"):
-            test_rides = load_object(subdir_name + "/test_rides")
+        if os.path.isfile(subdir_name + "/test_rides_" + str(nf1 + 1) + "_" + str(nf2 + 1)):
+            test_rides = load_object(subdir_name + "/test_rides_" + str(nf1 + 1) + "_" + str(nf2 + 1))
         val_rides = set()
-        if os.path.isfile(subdir_name + "/val_rides"):
-            val_rides = load_object(subdir_name + "/val_rides")
+        if os.path.isfile(subdir_name + "/val_rides_" + str(nf1 + 1) + "_" + str(nf2 + 1)):
+            val_rides = load_object(subdir_name + "/val_rides_" + str(nf1 + 1) + "_" + str(nf2 + 1))
             
         for some_file in all_files:  
             if subdir_name + "/cleaned_csv/" + some_file in bad_rides_filenames or subdir_name + "/cleaned_csv/" + some_file in gap_rides_filenames or some_file in test_rides or some_file in val_rides: 
@@ -180,13 +180,16 @@ def read_time():
                         time_int[time_index] = 10 ** -20 
             all_mine[subdir_name + "/cleaned_csv/" + some_file] = time_int
     
-    if not os.path.isdir("actual_train/"):
-        os.makedirs("actual_train/")
+    if not os.path.isdir("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/"):
+        os.makedirs("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/")
     
-    save_object("actual_train/actual_train_time", all_mine)
+    save_object("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/actual_train_time", all_mine)
  
-read_heading()
-read_latitude_no_abs()
-read_longitude_no_abs()
-read_speed()
-read_time()
+sf1, sf2 = 5, 5
+for nf1 in range(sf1):
+    for nf2 in range(sf2):
+        read_heading(nf1, nf2)
+        read_latitude_no_abs(nf1, nf2)
+        read_longitude_no_abs(nf1, nf2)
+        read_speed(nf1, nf2)
+        read_time(nf1, nf2)

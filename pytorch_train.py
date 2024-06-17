@@ -13,9 +13,10 @@ ws_range = [2, 3, 4, 5, 10, 20, 30]
 
 hidden_range = [256]
 
-model_list = ["GRU", "RNN", "LSTM"]
+model_list = ["LSTM"]
 
 modes = ["Linear", "Reference", "Twice", "Third"]
+modes = ["Reference"]
 
 for h in hidden_range:
 

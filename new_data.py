@@ -1,4 +1,4 @@
-from utilities import load_object, process_time
+from utilities import load_object, process_time, save_object
 import os
 import pandas as pd
 import numpy as np
@@ -28,6 +28,9 @@ for subdir_name in all_subdirs:
 
     max_gap = process_time("2012-07-01 00:00:00.000") - process_time("2012-07-01 00:00:00.000")
     avg_gap = []
+    lens = []
+    start_time = []
+    end_time = []
 
     sorted_set = set()
     reverse_set = set()
@@ -37,6 +40,9 @@ for subdir_name in all_subdirs:
         if some_file[0] == "e" and ".csv" in some_file: 
             file_with_ride = pd.read_csv(subdir_name + "/cleaned_csv/" + some_file) 
             list_time = list(file_with_ride["time"])
+            start_time.append(min(list_time))
+            end_time.append(max(list_time))
+            lens.append(len(list_time))
 
             file_name_new = subdir_name + "/cleaned_csv/" + some_file
  
@@ -69,18 +75,32 @@ for subdir_name in all_subdirs:
                 avg_gap_for_ride.append(gap_for_ride)
                 max_gap_for_ride = max(max_gap_for_ride, gap_for_ride)
                 max_gap = max(max_gap, max_gap_for_ride)
-            #print("max gap for ride", max_gap_for_ride) 
-                
+            #print("max gap for ride", max_gap_for_ride)
+
             if np.average(avg_gap_for_ride) < 5:
-                if file_name_new not in bad_rides_filenames or (file_name_new in bad_rides_filenames and bad_rides_filenames[file_name_new] > 0):
-                    good_rides_filenames[file_name_new] = max_gap_for_ride
-                if file_name_new in bad_rides_filenames and bad_rides_filenames[file_name_new] > 0: 
-                    bad_rides_filenames.pop(file_name_new)
+                if len(list_time) < 60:
+                    bad_rides_filenames[file_name_new] = -1000
+                else:
+                    if file_name_new not in bad_rides_filenames or (file_name_new in bad_rides_filenames and bad_rides_filenames[file_name_new] > 0):
+                        good_rides_filenames[file_name_new] = np.average(avg_gap_for_ride)
+                    if file_name_new in bad_rides_filenames and bad_rides_filenames[file_name_new] > 0: 
+                        bad_rides_filenames.pop(file_name_new)
             else:
                 if file_name_new not in bad_rides_filenames or (file_name_new in bad_rides_filenames and bad_rides_filenames[file_name_new] > 0):
-                    bad_rides_filenames[file_name_new] = max_gap_for_ride 
+                    bad_rides_filenames[file_name_new] = np.average(avg_gap_for_ride) 
             ride_for_file[some_file] = file_name_new
   
-    print(len(sorted_set), len(reverse_set), len(unsorted_set)) 
+    #print(len(sorted_set), len(reverse_set), len(unsorted_set)) 
     print(len(bad_rides_filenames), len(good_rides_filenames), len(ride_for_file))
-    print(max_gap, np.average(avg_gap))
+    save_object(subdir_name + "/bad_rides_filenames", bad_rides_filenames) 
+    if len(avg_gap) == 0: 
+        continue
+    #print(min(start_time), max(start_time))
+    #print(min(end_time), max(end_time))
+    print(np.average(avg_gap), min(start_time), max(end_time), min(lens))
+    ls = 0
+    for l in lens: 
+        if l < 60:
+            ls += 1
+    if ls != 0:
+        print(ls)
