@@ -34,8 +34,8 @@ def read_heading(nf1, nf2):
             direction_int = [np.round(direction, 0) for direction in directions]
             all_mine[subdir_name + "/cleaned_csv/" + some_file] = direction_int
     
-    if not os.path.isdir("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/"):
-        os.makedirs("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/")
+    if not os.path.isdir("actual_train/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/"):
+        os.makedirs("actual_train/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/")
     
     save_object("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/actual_train_direction", all_mine)
  
@@ -71,8 +71,8 @@ def read_latitude_no_abs(nf1, nf2):
             latitude_int = [np.round(latitudes[latitude_index + 1] - latitudes[latitude_index], 10) for latitude_index in range(len(latitudes) - 1)]
             all_mine[subdir_name + "/cleaned_csv/" + some_file] = latitude_int
    
-    if not os.path.isdir("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/"):
-        os.makedirs("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/")
+    if not os.path.isdir("actual_train/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/"):
+        os.makedirs("actual_train/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/")
     
     save_object("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/actual_train_latitude_no_abs", all_mine)
   
@@ -108,8 +108,8 @@ def read_longitude_no_abs(nf1, nf2):
             longitude_int = [np.round(longitudes[longitude_index + 1] - longitudes[longitude_index], 10) for longitude_index in range(len(longitudes) - 1)]
             all_mine[subdir_name + "/cleaned_csv/" + some_file] = longitude_int
     
-    if not os.path.isdir("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/"):
-        os.makedirs("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/")
+    if not os.path.isdir("actual_train/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/"):
+        os.makedirs("actual_train/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/")
     
     save_object("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/actual_train_longitude_no_abs", all_mine)
   
@@ -142,8 +142,8 @@ def read_speed(nf1, nf2):
             speed_int = [np.round(speed, 0) for speed in speeds] 
             all_mine[subdir_name + "/cleaned_csv/" + some_file] = speed_int
     
-    if not os.path.isdir("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/"):
-        os.makedirs("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/")
+    if not os.path.isdir("actual_train/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/"):
+        os.makedirs("actual_train/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/")
     
     save_object("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/actual_train_speed", all_mine)
 
@@ -180,8 +180,8 @@ def read_time(nf1, nf2):
                         time_int[time_index] = 10 ** -20 
             all_mine[subdir_name + "/cleaned_csv/" + some_file] = time_int
     
-    if not os.path.isdir("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/"):
-        os.makedirs("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/")
+    if not os.path.isdir("actual_train/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/"):
+        os.makedirs("actual_train/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/")
     
     save_object("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/actual_train_time", all_mine)
  
