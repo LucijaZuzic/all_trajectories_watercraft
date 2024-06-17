@@ -20,7 +20,7 @@ setse = {"offsets": ["longitude_no_abs", "latitude_no_abs", "time"], "speed_dire
 sf1, sf2 = 5, 5
 for nf1 in range(sf1):
     for nf2 in range(sf2):
-        for filename in os.listdir("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1)):
+        for filename in os.listdir("actual_train/" + str(nf1 + 1) + "/" + str(nf2 + 1)):
 
             varname = filename.replace("actual_train_", "")
 
