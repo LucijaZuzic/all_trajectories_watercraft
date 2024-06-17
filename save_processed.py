@@ -54,4 +54,4 @@ for nf1 in range(sf1):
         if not os.path.isdir("actual/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/"):
             os.makedirs("actual/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/")
 
-        save_object("actual/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/actual_traj", dict_long_lat)
+        save_object("actual/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/actual_traj", dict_long_lat)

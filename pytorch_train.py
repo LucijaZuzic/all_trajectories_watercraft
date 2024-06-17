@@ -29,9 +29,9 @@ for nf1 in range(sf1):
 
                 varname = filename.replace("actual_train_", "")
 
-                file_object_train = load_object("actual_train/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/actual_train_" + varname) 
-                file_object_val = load_object("actual_val/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/actual_val_" + varname)
-                file_object_test = load_object("actual/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/actual_" + varname)
+                file_object_train = load_object("actual_train/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/actual_train_" + varname) 
+                file_object_val = load_object("actual_val/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/actual_val_" + varname)
+                file_object_test = load_object("actual/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/actual_" + varname)
             
                 for model_name in model_list:
 

@@ -34,7 +34,7 @@ def read_heading(nf1, nf2):
     if not os.path.isdir("actual_train_val/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/"):
         os.makedirs("actual_train_val/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/")
     
-    save_object("actual_train_val/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/actual_train_val_direction", all_mine)
+    save_object("actual_train_val/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/actual_train_val_direction", all_mine)
  
 def read_latitude_no_abs(nf1, nf2): 
     all_mine = dict()
@@ -68,7 +68,7 @@ def read_latitude_no_abs(nf1, nf2):
     if not os.path.isdir("actual_train_val/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/"):
         os.makedirs("actual_train_val/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/")
     
-    save_object("actual_train_val/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/actual_train_val_latitude_no_abs", all_mine)
+    save_object("actual_train_val/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/actual_train_val_latitude_no_abs", all_mine)
   
 def read_longitude_no_abs(nf1, nf2): 
     all_mine = dict()
@@ -102,7 +102,7 @@ def read_longitude_no_abs(nf1, nf2):
     if not os.path.isdir("actual_train_val/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/"):
         os.makedirs("actual_train_val/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/")
     
-    save_object("actual_train_val/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/actual_train_val_longitude_no_abs", all_mine)
+    save_object("actual_train_val/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/actual_train_val_longitude_no_abs", all_mine)
   
 def read_speed(nf1, nf2): 
     all_mine = dict()
@@ -133,7 +133,7 @@ def read_speed(nf1, nf2):
     if not os.path.isdir("actual_train_val/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/"):
         os.makedirs("actual_train_val/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/")
     
-    save_object("actual_train_val/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/actual_train_val_speed", all_mine)
+    save_object("actual_train_val/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/actual_train_val_speed", all_mine)
 
 def read_time(nf1, nf2): 
     all_mine = dict()
@@ -168,7 +168,7 @@ def read_time(nf1, nf2):
     if not os.path.isdir("actual_train_val/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/"):
         os.makedirs("actual_train_val/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/")
     
-    save_object("actual_train_val/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/actual_train_val_time", all_mine)
+    save_object("actual_train_val/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/actual_train_val_time", all_mine)
  
 sf1, sf2 = 5, 5
 for nf1 in range(sf1):
