@@ -8,3 +8,6 @@ results*/*/*
 tokenized*/*/*
 *mosaic*/*
 actual*/*
+retry*/*
+wandb/*
+checkpoints/*

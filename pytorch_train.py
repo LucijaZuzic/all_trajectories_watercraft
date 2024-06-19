@@ -124,7 +124,7 @@ for nf1 in range(sf1):
                         for mod_use in modes:
                             hidden_use = hidden_range[0]
                 
-                            if os.path.isfile("train_pytorch/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/predictions/test/" + model_name + "/" + varname + "_" + model_name + "_ws_" + str(ws_use) + "_hidden_" + str(hidden_use) + "_test.csv"):
+                            if os.path.isfile("train_pytorch/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/predictions/test/" + model_name + "/" + varname + "_" + model_name + "_ws_" + str(ws_use) + "_hidden_" + str(hidden_use) + "_test.csv"):
                                 continue
                                 
                             print(mod_use, varname, model_name, ws_use, hidden_use)
@@ -173,15 +173,15 @@ for nf1 in range(sf1):
                                 if model_name == "LSTM": 
                                     pytorch_model = PyTorchLSTMModelTwice(ws_use, hidden_use, hidden_use // 2, ws_use)
 
-                            if not os.path.isdir("train_pytorch/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/models/" + model_name):
-                                os.makedirs("train_pytorch/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/models/" + model_name)
+                            if not os.path.isdir("train_pytorch/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/models/" + model_name):
+                                os.makedirs("train_pytorch/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/models/" + model_name)
                         
-                            if not os.path.isdir("train_pytorch/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/predictions/train/" + model_name):
-                                os.makedirs("train_pytorch/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/predictions/train/" + model_name)
-                            if not os.path.isdir("train_pytorch/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/predictions/val/" + model_name):
-                                os.makedirs("train_pytorch/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/predictions/val/" + model_name)
-                            if not os.path.isdir("train_pytorch/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/predictions/test/" + model_name):
-                                os.makedirs("train_pytorch/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/predictions/test/" + model_name)
+                            if not os.path.isdir("train_pytorch/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/predictions/train/" + model_name):
+                                os.makedirs("train_pytorch/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/predictions/train/" + model_name)
+                            if not os.path.isdir("train_pytorch/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/predictions/val/" + model_name):
+                                os.makedirs("train_pytorch/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/predictions/val/" + model_name)
+                            if not os.path.isdir("train_pytorch/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/predictions/test/" + model_name):
+                                os.makedirs("train_pytorch/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/predictions/test/" + model_name)
 
                             device = torch.device("cuda")
                             pytorch_model.to(device)
@@ -199,11 +199,11 @@ for nf1 in range(sf1):
                             num_epochs = 5
                             best_val_loss = float('inf')
 
-                            vallosspath = "train_pytorch/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/models/" + model_name + "/" + varname + "_" + model_name + "_ws_" + str(ws_use) + "_hidden_" + str(hidden_use) + "_val_loss"
+                            vallosspath = "train_pytorch/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/models/" + model_name + "/" + varname + "_" + model_name + "_ws_" + str(ws_use) + "_hidden_" + str(hidden_use) + "_val_loss"
                             vallosses = []
-                            trainlosspath = "train_pytorch/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/models/" + model_name + "/" + varname + "_" + model_name + "_ws_" + str(ws_use) + "_hidden_" + str(hidden_use) + "_train_loss"
+                            trainlosspath = "train_pytorch/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/models/" + model_name + "/" + varname + "_" + model_name + "_ws_" + str(ws_use) + "_hidden_" + str(hidden_use) + "_train_loss"
                             trainlosses = []
-                            best_model_path = "train_pytorch/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/models/" + model_name + "/" + varname + "_" + model_name + "_ws_" + str(ws_use) + "_hidden_" + str(hidden_use) + ".pth"
+                            best_model_path = "train_pytorch/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/models/" + model_name + "/" + varname + "_" + model_name + "_ws_" + str(ws_use) + "_hidden_" + str(hidden_use) + ".pth"
                             useeval = True
                             for epoch in range(num_epochs):
                                 print(f"Epoch {epoch+1}/{num_epochs}")
@@ -259,6 +259,6 @@ for nf1 in range(sf1):
                                 predict_val_all = pytorch_model(torch.tensor(x_val_all_short).float().to(device))
                                 predict_test_all = pytorch_model(torch.tensor(x_test_all_short).float().to(device))
                                 
-                                print_predictions(y_train_all_short, predict_train_all, "train_pytorch/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/predictions/train/" + model_name + "/" + varname + "_" + model_name + "_ws_" + str(ws_use) + "_hidden_" + str(hidden_use) + "_train.csv")
-                                print_predictions(y_val_all_short, predict_val_all, "train_pytorch/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/predictions/val/" + model_name + "/" + varname + "_" + model_name + "_ws_" + str(ws_use) + "_hidden_" + str(hidden_use) + "_val.csv")
-                                print_predictions(y_test_all_short, predict_test_all, "train_pytorch/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/predictions/test/" + model_name + "/" + varname + "_" + model_name + "_ws_" + str(ws_use) + "_hidden_" + str(hidden_use) + "_test.csv")
+                                print_predictions(y_train_all_short, predict_train_all, "train_pytorch/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/predictions/train/" + model_name + "/" + varname + "_" + model_name + "_ws_" + str(ws_use) + "_hidden_" + str(hidden_use) + "_train.csv")
+                                print_predictions(y_val_all_short, predict_val_all, "train_pytorch/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/predictions/val/" + model_name + "/" + varname + "_" + model_name + "_ws_" + str(ws_use) + "_hidden_" + str(hidden_use) + "_val.csv")
+                                print_predictions(y_test_all_short, predict_test_all, "train_pytorch/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/" + varname + "/predictions/test/" + model_name + "/" + varname + "_" + model_name + "_ws_" + str(ws_use) + "_hidden_" + str(hidden_use) + "_test.csv")

@@ -24,7 +24,7 @@ for nf1 in range(sf1):
 
             varname = filename.replace("actual_train_", "")
 
-            file_object_train = load_object("actual/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/actual" + varname) 
+            file_object_train = load_object("actual/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/actual_" + varname) 
             file_object_val = load_object("actual_val/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/actual_val_" + varname)
             file_object_test = load_object("actual_train/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/actual_train_" + varname)
     
@@ -53,17 +53,17 @@ for nf1 in range(sf1):
                     if len(d_object_train[datemark]) == 0:
                         d_object_train[datemark].append(startdate)
                     else:
-                        d_object_train[datemark].append(d_object_train[datemark][-1] + timedelta(hours = 1))
+                        d_object_train[datemark].append(d_object_train[datemark][-1] + timedelta(minutes = 1))
 
                     if len(d_object_trainval[datemark]) == 0:
                         d_object_trainval[datemark].append(startdate)
                     else:
-                        d_object_trainval[datemark].append(d_object_trainval[datemark][-1] + timedelta(hours = 1))
+                        d_object_trainval[datemark].append(d_object_trainval[datemark][-1] + timedelta(minutes = 1))
 
                     if len(d_object_all[datemark]) == 0:
                         d_object_all[datemark].append(startdate)
                     else:
-                        d_object_all[datemark].append(d_object_all[datemark][-1] + timedelta(hours = 1)) 
+                        d_object_all[datemark].append(d_object_all[datemark][-1] + timedelta(minutes = 1)) 
 
             for k in file_object_val:
                 d_object_val[varname] += file_object_val[k]
@@ -74,17 +74,17 @@ for nf1 in range(sf1):
                     if len(d_object_val[datemark]) == 0:
                         d_object_val[datemark].append(startdate)
                     else:
-                        d_object_val[datemark].append(d_object_val[datemark][-1] + timedelta(hours = 1))
+                        d_object_val[datemark].append(d_object_val[datemark][-1] + timedelta(minutes = 1))
 
                     if len(d_object_trainval[datemark]) == 0:
                         d_object_trainval[datemark].append(startdate)
                     else:
-                        d_object_trainval[datemark].append(d_object_trainval[datemark][-1] + timedelta(hours = 1))
+                        d_object_trainval[datemark].append(d_object_trainval[datemark][-1] + timedelta(minutes = 1))
 
                     if len(d_object_all[datemark]) == 0:
                         d_object_all[datemark].append(startdate)
                     else:
-                        d_object_all[datemark].append(d_object_all[datemark][-1] + timedelta(hours = 1)) 
+                        d_object_all[datemark].append(d_object_all[datemark][-1] + timedelta(minutes = 1)) 
 
             for k in file_object_test:
                 d_object_test[varname] += file_object_test[k]
@@ -94,12 +94,12 @@ for nf1 in range(sf1):
                     if len(d_object_test[datemark]) == 0:
                         d_object_test[datemark].append(startdate)
                     else:
-                        d_object_test[datemark].append(d_object_test[datemark][-1] + timedelta(hours = 1))
+                        d_object_test[datemark].append(d_object_test[datemark][-1] + timedelta(minutes = 1))
 
                     if len(d_object_all[datemark]) == 0:
                         d_object_all[datemark].append(startdate)
                     else:
-                        d_object_all[datemark].append(d_object_all[datemark][-1] + timedelta(hours = 1)) 
+                        d_object_all[datemark].append(d_object_all[datemark][-1] + timedelta(minutes = 1)) 
 
         for s in setse:
 
@@ -131,14 +131,14 @@ for nf1 in range(sf1):
             dfnewtrainval = pd.DataFrame(dnewtrainval)
             dfnewall = pd.DataFrame(dnewall)
 
-            if not os.path.isdir("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/dataset/" + s + "/"):
-                os.makedirs("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/dataset/" + s + "/")
+            if not os.path.isdir("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/dataset/" + s + "/"):
+                os.makedirs("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/dataset/" + s + "/")
 
-            dfnewtrain.to_csv("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/dataset/" + s + "/newdata_TRAIN.csv", index = False, sep = ",") 
-            dfnewval.to_csv("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/dataset/" + s + "/newdata_VAL.csv", index = False, sep = ",") 
-            dfnewtest.to_csv("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/dataset/" + s + "/newdata_TEST.csv", index = False, sep = ",") 
-            dfnewtrainval.to_csv("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/dataset/" + s + "/newdata_TRAIN_VAL.csv", index = False, sep = ",") 
-            dfnewall.to_csv("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/dataset/" + s + "/newdata_ALL.csv", index = False, sep = ",") 
+            dfnewtrain.to_csv("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/dataset/" + s + "/newdata_TRAIN.csv", index = False, sep = ",") 
+            dfnewval.to_csv("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/dataset/" + s + "/newdata_VAL.csv", index = False, sep = ",") 
+            dfnewtest.to_csv("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/dataset/" + s + "/newdata_TEST.csv", index = False, sep = ",") 
+            dfnewtrainval.to_csv("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/dataset/" + s + "/newdata_TRAIN_VAL.csv", index = False, sep = ",") 
+            dfnewall.to_csv("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/dataset/" + s + "/newdata_ALL.csv", index = False, sep = ",") 
         
         yml_part = dict()
         for sth in setse:
@@ -151,7 +151,7 @@ for nf1 in range(sf1):
                             "dataset": sth, 
                             "data": "custom", 
                             "embed": "timeF", 
-                            "root_path": "retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/dataset/" + sth + "/", 
+                            "root_path": "retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/dataset/" + sth + "/", 
                             "data_path": "newdata_TRAIN.csv", 
                             "features": "M",
                             "seq_len": ws_use, 
@@ -166,46 +166,46 @@ for nf1 in range(sf1):
                     yml_part[sth][ws_use] += "\n  " + v + ": " + str(dictiowt[v]) 
                 yml_part[sth][ws_use] += "\n" 
 
-                if not os.path.isdir("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/data_provider/" + sth + "/" + str(ws_use)):
-                    os.makedirs("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/data_provider/" + sth + "/" + str(ws_use))
+                if not os.path.isdir("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/data_provider/" + sth + "/" + str(ws_use)):
+                    os.makedirs("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/data_provider/" + sth + "/" + str(ws_use))
 
-                file_yml_pre_write = open("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/data_provider/" + sth + "/"+ str(ws_use) + "/multi_task_pretrain.yaml", "w")
+                file_yml_pre_write = open("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/data_provider/" + sth + "/"+ str(ws_use) + "/multi_task_pretrain.yaml", "w")
                 file_yml_pre_write.write(yml_part[sth][ws_use])
                 file_yml_pre_write.close()
 
-                file_yml_pre_write_all = open("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/data_provider/" + sth + "/" + str(ws_use) + "/multi_task_pretrain_all.yaml", "w")
+                file_yml_pre_write_all = open("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/data_provider/" + sth + "/" + str(ws_use) + "/multi_task_pretrain_all.yaml", "w")
                 file_yml_pre_write_all.write(yml_part[sth][ws_use].replace("TRAIN", "ALL"))
                 file_yml_pre_write_all.close()
                 
-                file_yml_pre_write_val = open("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/data_provider/" + sth + "/" + str(ws_use) + "/multi_task_pretrain_val.yaml", "w")
+                file_yml_pre_write_val = open("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/data_provider/" + sth + "/" + str(ws_use) + "/multi_task_pretrain_val.yaml", "w")
                 file_yml_pre_write_val.write(yml_part[sth][ws_use].replace("TRAIN", "TRAIN_VAL"))
                 file_yml_pre_write_val.close()
                 
-                file_yml_pre_write_valo = open("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/data_provider/" + sth + "/" + str(ws_use) + "/multi_task_pretrain_valonly.yaml", "w")
+                file_yml_pre_write_valo = open("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/data_provider/" + sth + "/" + str(ws_use) + "/multi_task_pretrain_valonly.yaml", "w")
                 file_yml_pre_write_valo.write(yml_part[sth][ws_use].replace("TRAIN", "VAL"))
                 file_yml_pre_write_valo.close()
 
-                file_yml_pre_write_test = open("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/data_provider/" + sth + "/" + str(ws_use) + "/multi_task_pretrain_test.yaml", "w")
+                file_yml_pre_write_test = open("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/data_provider/" + sth + "/" + str(ws_use) + "/multi_task_pretrain_test.yaml", "w")
                 file_yml_pre_write_test.write(yml_part[sth][ws_use].replace("TRAIN", "TEST"))
                 file_yml_pre_write_test.close()
             
-                file_yml_write = open("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/data_provider/" + sth + "/"+ str(ws_use) + "/zeroshot_task.yaml", "w")
+                file_yml_write = open("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/data_provider/" + sth + "/"+ str(ws_use) + "/zeroshot_task.yaml", "w")
                 file_yml_write.write(yml_part[sth][ws_use].replace("pretrain_", ""))
                 file_yml_write.close()
 
-                file_yml_write_all = open("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/data_provider/" + sth + "/" + str(ws_use) + "/zeroshot_task_all.yaml", "w")
+                file_yml_write_all = open("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/data_provider/" + sth + "/" + str(ws_use) + "/zeroshot_task_all.yaml", "w")
                 file_yml_write_all.write(yml_part[sth][ws_use].replace("pretrain_", "").replace("TRAIN", "ALL"))
                 file_yml_write_all.close()
                 
-                file_yml_write_val = open("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/data_provider/" + sth + "/" + str(ws_use) + "/zeroshot_task_val.yaml", "w")
+                file_yml_write_val = open("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/data_provider/" + sth + "/" + str(ws_use) + "/zeroshot_task_val.yaml", "w")
                 file_yml_write_val.write(yml_part[sth][ws_use].replace("pretrain_", "").replace("TRAIN", "TRAIN_VAL"))
                 file_yml_write_val.close()
                 
-                file_yml_write_valo = open("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/data_provider/" + sth + "/" + str(ws_use) + "/zeroshot_task_valonly.yaml", "w")
+                file_yml_write_valo = open("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/data_provider/" + sth + "/" + str(ws_use) + "/zeroshot_task_valonly.yaml", "w")
                 file_yml_write_valo.write(yml_part[sth][ws_use].replace("pretrain_", "").replace("TRAIN", "VAL"))
                 file_yml_write_valo.close()
 
-                file_yml_write_test = open("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/data_provider/" + sth + "/" + str(ws_use) + "/zeroshot_task_test.yaml", "w")
+                file_yml_write_test = open("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/data_provider/" + sth + "/" + str(ws_use) + "/zeroshot_task_test.yaml", "w")
                 file_yml_write_test.write(yml_part[sth][ws_use].replace("pretrain_", "").replace("TRAIN", "TEST"))
                 file_yml_write_test.close()
         
@@ -214,45 +214,45 @@ for nf1 in range(sf1):
                                 "longlat_speed_direction": yml_part["longlat"][ws_use] + yml_part["speed_direction"][ws_use].replace("task_dataset:", "")}
             for vd in yml_part_merged12:
             
-                if not os.path.isdir("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/data_provider/" + vd + "/" + str(ws_use)):
-                    os.makedirs("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/data_provider/" + vd + "/" + str(ws_use))
+                if not os.path.isdir("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/data_provider/" + vd + "/" + str(ws_use)):
+                    os.makedirs("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/data_provider/" + vd + "/" + str(ws_use))
 
-                file_yml_pre_write = open("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/data_provider/" + vd + "/"+ str(ws_use) + "/multi_task_pretrain.yaml", "w")
+                file_yml_pre_write = open("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/data_provider/" + vd + "/"+ str(ws_use) + "/multi_task_pretrain.yaml", "w")
                 file_yml_pre_write.write(yml_part_merged12[vd])
                 file_yml_pre_write.close()
 
-                file_yml_pre_write_all = open("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/data_provider/" + vd + "/" + str(ws_use) + "/multi_task_pretrain_all.yaml", "w")
+                file_yml_pre_write_all = open("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/data_provider/" + vd + "/" + str(ws_use) + "/multi_task_pretrain_all.yaml", "w")
                 file_yml_pre_write_all.write(yml_part_merged12[vd].replace("TRAIN", "ALL"))
                 file_yml_pre_write_all.close()
                 
-                file_yml_pre_write_val = open("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/data_provider/" + vd + "/" + str(ws_use) + "/multi_task_pretrain_val.yaml", "w")
+                file_yml_pre_write_val = open("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/data_provider/" + vd + "/" + str(ws_use) + "/multi_task_pretrain_val.yaml", "w")
                 file_yml_pre_write_val.write(yml_part_merged12[vd].replace("TRAIN", "TRAIN_VAL"))
                 file_yml_pre_write_val.close()
                 
-                file_yml_pre_write_valo = open("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/data_provider/" + vd + "/" + str(ws_use) + "/multi_task_pretrain_valonly.yaml", "w")
+                file_yml_pre_write_valo = open("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/data_provider/" + vd + "/" + str(ws_use) + "/multi_task_pretrain_valonly.yaml", "w")
                 file_yml_pre_write_valo.write(yml_part_merged12[vd].replace("TRAIN", "VAL"))
                 file_yml_pre_write_valo.close()
 
-                file_yml_pre_write_test = open("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/data_provider/" + vd + "/" + str(ws_use) + "/multi_task_pretrain_test.yaml", "w")
+                file_yml_pre_write_test = open("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/data_provider/" + vd + "/" + str(ws_use) + "/multi_task_pretrain_test.yaml", "w")
                 file_yml_pre_write_test.write(yml_part_merged12[vd].replace("TRAIN", "TEST"))
                 file_yml_pre_write_test.close()
             
-                file_yml_write = open("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/data_provider/" + vd + "/"+ str(ws_use) + "/zeroshot_task.yaml", "w")
+                file_yml_write = open("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/data_provider/" + vd + "/"+ str(ws_use) + "/zeroshot_task.yaml", "w")
                 file_yml_write.write(yml_part_merged12[vd].replace("pretrain_", ""))
                 file_yml_write.close()
 
-                file_yml_write_all = open("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/data_provider/" + vd + "/" + str(ws_use) + "/zeroshot_task_all.yaml", "w")
+                file_yml_write_all = open("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/data_provider/" + vd + "/" + str(ws_use) + "/zeroshot_task_all.yaml", "w")
                 file_yml_write_all.write(yml_part_merged12[vd].replace("pretrain_", "").replace("TRAIN", "ALL"))
                 file_yml_write_all.close()
                 
-                file_yml_write_val = open("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/data_provider/" + vd + "/" + str(ws_use) + "/zeroshot_task_val.yaml", "w")
+                file_yml_write_val = open("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/data_provider/" + vd + "/" + str(ws_use) + "/zeroshot_task_val.yaml", "w")
                 file_yml_write_val.write(yml_part_merged12[vd].replace("pretrain_", "").replace("TRAIN", "TRAIN_VAL"))
                 file_yml_write_val.close()
                 
-                file_yml_write_valo = open("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/data_provider/" + vd + "/" + str(ws_use) + "/zeroshot_task_valonly.yaml", "w")
+                file_yml_write_valo = open("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/data_provider/" + vd + "/" + str(ws_use) + "/zeroshot_task_valonly.yaml", "w")
                 file_yml_write_valo.write(yml_part_merged12[vd].replace("pretrain_", "").replace("TRAIN", "VAL"))
                 file_yml_write_valo.close()
 
-                file_yml_write_test = open("retry_train_last/" + str(nf1 + 1) + "_" + str(nf2 + 1) + "/data_provider/" + vd + "/" + str(ws_use) + "/zeroshot_task_test.yaml", "w")
+                file_yml_write_test = open("retry_train_last/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/data_provider/" + vd + "/" + str(ws_use) + "/zeroshot_task_test.yaml", "w")
                 file_yml_write_test.write(yml_part_merged12[vd].replace("pretrain_", "").replace("TRAIN", "TEST"))
                 file_yml_write_test.close()
